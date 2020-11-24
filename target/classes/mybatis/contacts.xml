@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace속성:매퍼파일의 완전한경로 .xml는 생략 -->
+<!-- ※ibatis와는 다르게 id값에 .(dot)를 사용 못한다. -->
+<mapper namespace="mybatis.contacts">
+	<insert id="contactsInsert" parameterType="Map">
+		INSERT INTO contacts 
+		VALUES (SEQ_CONTACTS.NEXTVAL,#{no},#{name},#{photo},#{tel})
+	</insert>
+	
+	<select id="contactsSelectList" resultType="contactsDTO">
+		SELECT * FROM contacts ORDER BY contact_id DESC
+	</select>
+	
+	<select id="contactsSelectOne" parameterType="String" resultType="contactsDTO">
+		SELECT * FROM contacts WHERE contact_id=#{contact_id}
+	</select>
+	
+	<update id="contactsUpdate" parameterType="Map">
+		UPDATE contacts
+		<set>
+			<if test="name != null">
+				,name = #{name}
+			</if>
+			<if test="tel != null">
+				,tel = #{tel}
+			</if>
+			<if test="photo != null">
+				,photo = #{photo}
+			</if>
+		</set>
+		WHERE contact_id=#{contact_id}
+	</update>
+	
+	<delete id="contactsDelete" parameterType="String">
+		DELETE contacts WHERE contact_id=#{contact_id}
+	</delete>
+</mapper>
