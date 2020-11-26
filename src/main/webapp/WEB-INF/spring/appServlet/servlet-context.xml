@@ -15,10 +15,10 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<!-- 
 	<resources mapping="/resources/**" location="/resources/" />
-	 -->
-	<!-- webapp의 어느 디렉토리에 스태틱 리소스(이미지,.css,.js등)를 두더라도 읽어 올수 있도록 설정하는 부분-->
-	<default-servlet-handler/> 
-
+	-->
+	<default-servlet-handler/>
+	
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -28,7 +28,8 @@
 	<context:component-scan base-package="com.kosmo.rest" />
 	
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-				<beans:property name="maxUploadSize" value="10485760" />
+		<beans:property name="maxUploadSize" value="10485760" /> 
 	</beans:bean>
+	
 	
 </beans:beans>

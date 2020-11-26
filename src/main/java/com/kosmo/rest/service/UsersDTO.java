@@ -5,16 +5,14 @@ public class UsersDTO {
 	private String age;
 	private String addr;
 	
-	public UsersDTO() {
 	
-	}
-	
+	public UsersDTO() {}	
 	public UsersDTO(String name, String age, String addr) {
-		super();
 		this.name = name;
 		this.age = age;
 		this.addr = addr;
 	}
+
 	public String getName() {
 		return name;
 	}
@@ -33,9 +31,9 @@ public class UsersDTO {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-
 	@Override
 	public String toString() {
 		return "UsersDTO [name=" + name + ", age=" + age + ", addr=" + addr + "]";
 	}
+	
 }
